@@ -1,0 +1,18 @@
+{% extends 'response/base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="login-page">
+  <img src="{% static 'images/rescue.JPG' %}" alt="">
+    <div class="signup">
+      <h1>Sign Up</h1>
+      <br>
+      <a href="{% url 'response:RescueSignUp' %}"><p>I'm a Rescuer</p> </a>
+      <br>
+      <a href="{% url 'response:AgencySignUp' %}"><p>I'm a Agencies</p> </a>
+    </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,104 @@
+<!-- location_form.html -->
+<!DOCTYPE html>
+{% extends 'response/base.html' %}
+{% load static %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPS Location Form</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" name="" value="submit">
+    </form>
+
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+
+        function showPosition(position) {
+            document.getElementById("id_latitude").value = position.coords.latitude;
+            document.getElementById("id_longitude").value = position.coords.longitude;
+        }
+    </script>
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/fire.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Fire Rescue Departments</h5>
+                      <p class="card-text">Fire and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/search/fire-department+in+Coimbatore,+Tamil+Nadu/@11.0521963,76.8213808,11z/data=!3m1!4b1?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/medic1.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Medical Rescue Department</h5>
+                      <p class="card-text">Medical and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/search/medical+emergency/@10.0088874,76.3321596,15z/data=!3m1!4b1?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/marine.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Coast Guard Rescue Departments</h5>
+                      <p class="card-text">Coast Guard and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/search/Indian+Coast+Guard/@9.9678994,76.2442293,16z/data=!3m1!4b1?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/civil.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Civil Rescue Departments</h5>
+                      <p class="card-text">Civil and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/search/rescue+squad/@26.0848248,-3.0489131,3z/data=!3m1!4b1?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/coast guard.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Marine Rescue Departments</h5>
+                      <p class="card-text">Marine and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/place/MARINE+EMERGENCY+RESPONSE+CENTER+(MERC)/@21.6618392,69.7009581,17z/data=!3m1!4b1!4m6!3m5!1s0x3957cb91acc83b17:0xf494ab8a52a48543!8m2!3d21.6618393!4d69.7055715!16s%2Fg%2F11spfk73jg?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{% static 'images/air.JPG' %}" alt="" height="230px">
+                    <div class="card-body">
+                      <h5 class="card-title">Address Of Overall Air Rescue Departments</h5>
+                      <p class="card-text">Air and Rescue Agencies</p>
+                      <a href="https://www.google.com/maps/search/air+rescue+squad+coimbatore/@11.0212069,76.9417495,14z/data=!3m1!4b1?entry=ttu" target="_blank" class="btn btn-primary">View On Map</a>
+                    </div>
+                  </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+Run storage.py at device/instance where you had storage for files. make changes of IP and port number in info.py for both client.py and storage.py
+
+Run python manage.py runserver to start webapp
+
+To upload a file(Check screenshots), the user has to click on the ‘Choose file’ button which will allow them to locate and select the file they want to upload from their local system.While uploading a file, the user can choose to enter a username or upload anonymously without supplying a user name. For downloading a file, the user has to request the desired file by copying the path presented in the ‘copy’ section of the downloads table and entering it in the request field. Once the file has been requested, the user can download the file by entering the same path in the download field. At the storage end, a python script continuously runs and accepts any incoming connections from the Web Application. Once a connection is made, we check for message packets and look for its type : Read / Write and follow the procedure based on the request made.
+
+Cloud Usage
+We used 3 instances on AWS for hosting our website. One for hosting Django based Web-Application and 2 instances to run server side code for file transfer to separately and securely store files shared by the user. Those 2 instances were for storage purposes. The reason that we decided to go with 2 instances for storage was to provide a more robust and resilient service by introducing redundancy in the data storage system. The benefit of having 2 instances for storage is that if one of the storage instances goes down due to some reason, the service will still be usable because of the second storage instance.

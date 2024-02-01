@@ -1,0 +1,41 @@
+{% extends 'response/base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+
+{% if rescue.rescue_assignment.count == 0 %}
+  <h2>No assignments Yet</h2>
+{% else %}
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Rescue Assignment Name</th>
+        <th scope="col">Uploaded By</th>
+        <th scope="col">Uploaded Date</th>
+        <th scope="col">Download</th>
+        <th scope="col">Rescue Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for assignment in rescue.rescue_assignment.all %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ assignment.assignment_name }}</td>
+          <td>{{ assignment.agency }}</td>
+          <td>{{ assignment.created_at }}</td>
+          <td><a href="{{ assignment.assignment.url }}" class="btn btn-primary" target="_blank">Download</a></td>
+          {% if assignment in assignment_list %}
+            <td>Submitted</td>
+          {% else %}
+            <td><a href="{% url 'response:submit_assignment' id=assignment.id %}" class="btn btn-primary">Submit</a></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+</div>
+</div>
+{% endblock %}

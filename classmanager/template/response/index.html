@@ -1,0 +1,94 @@
+{% extends 'response/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  {% for message in messages %}
+    <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+  {% endfor %}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+
+<div class="banner">
+      <img src="{% static 'images/first.JPG' %}" alt="">
+      <div class="content">
+        <h1>Rescue Agency Coordination and Response Platform</h1>
+        <p>A Rescue-Agency Portal</p>
+      </div>
+    </div>
+
+    <div class="about">
+      <h1>About Us</h1>
+      <p>The many specialty sub-fields of search and rescue include ground (lowland) rescue, mountain rescue, urban rescue in cities, combat rescue on the battlefield</p>
+    </div>
+
+    <div class="use-content">
+      <h1>Our Services</h1>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="box">
+            <div class="imgBx">
+              <img src="{% static 'images/service.webp' %}" alt="">
+            </div>
+            <div class="content">
+              <h3>For Agencies</h3>
+              <ol>
+                <li>Saving Lives & Beyond... It gives me immense pleasure to lead ‘National Disaster Response Force’, world’s single largest force dedicated to disaster response..</li>
+                <li>The Indian government strives to promote a national resolve to mitigate the damage and destruction caused by natural and man-made disasters, through sustained and collective efforts.</li>
+                <li>ational Disaster Response Force (NDRF) is a force of 16 battalions, organized on para-military lines, and manned by persons on deputation from the para-military forces of India.</li>
+                <li>National Database for Emergency Management (NDEM) is a unique Geo-portal to disseminate space-based inputs along with services of forecasting organizations addressing all natural.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="box">
+            <div class="imgBx">
+              <img src="{% static 'images/image.avif' %}" alt="">
+            </div>
+            <div class="content">
+              <h3>For Rescuers</h3>
+              <ol>
+                <li>As a disaster relief agency, we help people to survive and rebuild their lives through food, medical, education, shelter and livelihood programs. .</li>
+                <li> Our most recent interventions in Maharashtra, Karnataka and Assam have impacted thousands of lives! We are responding to the Cyclone/Floods in Tamil Nadu..</li>
+                <li>In India, AKAH has responded to major disasters across the country. We implement various disaster risk reduction activities to strengthen the capacity of local communities to prepare for </li>
+                <li> India's biggest rescue operation was fraught with difficulty, involving multiple agencies. Rescue teams had to dig by hand for the final metres after massive earth boring. </li>
+              </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="research">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'images/mastery-based-education.PNG' %}" alt="">
+        </div>
+        <div class="col-md-8">
+          <div class="digital-content">
+            <h2>Digital Statistics</h2>
+            <br>
+            <p>We surveyed over 16,000 peoples and administrators to better understand the state of digital Agencies. 
+              These include ground wilderness search and rescue, including the use of search and rescue canines; urban search and rescue in the city or urban environment; and air-sea rescue over the water.
+              Ground Search and Rescue is the search for persons who are lost or in distress on land or inland waterways.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social">
+      <h1>Are you ready to advance what's possible in every situation to Save Innocent Lives.</h1>
+      <h3>Then connect with us on social media.</h3>
+      <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
+      <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
+      <a class="social-icon" href="#"><i class="fab fa-instagram"></i></a>
+      <a class="social-icon" href="#"><i class="fab fa-google"></i></a>
+      <a class="social-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+{% endblock %}

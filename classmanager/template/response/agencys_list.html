@@ -1,0 +1,70 @@
+{% extends "response/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="rescue-list">
+<div class="container">
+  <form method='GET' action="{% url 'response:agencys_list' %}">
+    <p>Serch Agency: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for agency in agencys_list %}
+  <div class="col-6 col-md-4">
+  <div class="rescue-box">
+    <div class="imgBx">
+      {% if agency.agency_profile_pic %}
+      <img src="{{ agency.agency_profile_pic.url }}" alt="">
+      {% else %}
+      {% if forloop.counter0|divisibleby:"2" %}
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+      {% else %}
+      <img src="{% static 'images/login-avatar-2.PNG' %}" alt="">
+      {% endif %}
+      {% endif %}
+    </div>zz
+    <div class="content">
+      <h3>{{ agency.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ agency.user.username }}</p>
+      <p><i class="fas fa-books"></i> Subject Name: {{ agency.subject_name }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ agency.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ agency.email }}</p>
+      <a href="{% url 'response:write_message' pk=agency.pk %}"><p class="add-button">Message</p> </a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+</div>
+
+
+
+<!--
+  <div class="jumbotron">
+    <h1>Given below is the list of all Agency</h1>
+    <h3>Click on "message" to message agency</h3>
+
+    <form method='GET' action="{% url 'response:agencys_list' %}">
+      <input type='search' name='q' placeholder='Search'>
+    </form>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Subject</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for agency in agencys_list %}
+        <tr>
+          <th>{{ agency.name }}</th>
+          <th>{{ agency.subject_name }}</th>
+          <th> <a class="btn btn-primary" href="{% url 'response:write_message' pk=agency.pk %}">Message</a> </th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+-->
+{% endblock %}

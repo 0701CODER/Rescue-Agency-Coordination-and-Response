@@ -1,0 +1,79 @@
+{% extends "response/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="rescue-list">
+<div class="container">
+  {% if class_rescues_list.count == 0 %}
+    <h1>No rescues in the class.</h1>
+    {% else %}
+
+  <form method='GET' action="{% url 'response:class_rescue_list' %}">
+    <p>Search Rescue: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for rescue in class_rescues_list %}
+  <div class="col-6 col-md-4">
+  <div class="rescue-box">
+    <div class="imgBx">
+      {% if rescue.rescue_profile_pic %}
+      <img src="{{ rescue.rescue_profile_pic.url }}" alt="">
+      {% else %}
+      {% if forloop.counter0|divisibleby:"2" %}
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+      {% else %}
+      <img src="{% static 'images/login-avatar-2.PNG' %}" alt="">
+      {% endif %}
+      {% endif %}
+    </div>
+    <div class="content">
+      <h3>{{ rescue.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ rescue.user.username }}</p>
+      <p><i class="fal fa-user-tag"></i> Fighter No.: {{ rescue.roll_no }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ rescue.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ rescue.email }}</p>
+      <a href="{% url 'response:rescue_marks_list' pk=rescue.pk %}"><p class="add-button">View Marks Profile</p></a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endif %}
+</div>
+
+
+<!--
+<div class="jumbotron">
+  {% if agency.class_rescues.count == 0 %}
+    <h1>No rescues in the class.</h1>
+    {% else %}
+    <h1>Your class rescues list.</h1>
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Roll No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email Id</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rescue in agency.class_rescues.all %}
+        <tr>
+          <th>{{ rescue.roll_no }}</th>
+          <th>{{ rescue.name }}</th>
+          <th>{{ rescue.email }}</th>
+          <th> <a class="btn btn-primary" href="{% url 'response:rescue_marks_list' pk=rescue.pk %}">View Marks Profile</a> </th>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><a class="btn btn-danger" href="{% url 'response:write_notice' %}">Add Notice</a></p>
+  {% endif %}
+
+</div>
+-->
+{% endblock %}

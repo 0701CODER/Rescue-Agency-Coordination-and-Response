@@ -1,0 +1,47 @@
+{% extends 'response/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="profile">
+  <img src="{% static 'images/profile-background-3.PNG' %}" alt="">
+  <div class="profile-box">
+    {% if rescue.rescue_profile_pic %}
+      <img src="{{ rescue.rescue_profile_pic.url }}">
+    {% else %}
+      <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+    {% endif %}
+    <div class="profile-details">
+      <h1>{{ rescue.name }}</h1>
+      <br>
+      <p><i class="far fa-user"></i> Username: {{ rescue.user.username }}</p>
+      <p><i class="fal fa-user-tag"></i> Roll No.: {{ rescue.roll_no }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ rescue.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ rescue.email }}</p>
+      <a href="{% url 'response:rescue_update' pk=user.pk %}"> <p class="edit-button">Edit Profile</p> </a>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="row">
+  <div class="col-md-3">
+    {% if rescue.rescue_profile_pic %}
+      <img src="{{ rescue.rescue_profile_pic.url }}">
+    {% else %}
+      <img src="" alt="">
+    {% endif %}
+  </div>
+  <div class="col-md-9">
+    <h1>{{ rescue.user.username }}</h1>
+    <br>
+    <p>Name: {{ rescue.name }}</p>
+    <p>Roll No.: {{ rescue.roll_no }}</p>
+    <p>Email Id: {{ rescue.email }}</p>
+    <p>Phone: {{ rescue.phone }}</p>
+    <br>
+    <p> <a class="btn btn-primary" href="{% url 'response:rescue_update' pk=user.pk %}">Edit profile</a> </p>
+  </div>
+</div>
+-->
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'response/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="profile">
+  <img src="{% static 'images/fire.JPG' %}" alt="">
+  <div class="profile-box">
+    {% if agency.agency_profile_pic %}
+    <img src="{{ agency.agency_profile_pic.url }}" alt="">
+    {% else %}
+    <img src="{% static 'images/login-avatar.PNG' %}" alt="">
+    {% endif %}
+    <div class="profile-details">
+      <h1>{{ agency.name }}</h1>
+      <br>
+      <p><i class="far fa-user"></i> Username: {{ agency.user.username }}</p>
+      <p><i class="fas fa-books"></i> Subject Name: {{ agency.subject_name }}</p>
+      <p><i class="far fa-phone"></i> Phone: {{ agency.phone }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ agency.email }}</p>
+      <a href="{% url 'response:agency_update' pk=user.pk %}"><p class="edit-button">Edit profile</p></a>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<div class="row">
+  <div class="col-md-3">
+    {% if agency.agency_profile_pic %}
+      <img src="{{ agency.agency_profile_pic.url }}" style="width:100px;height:100px;">
+    {% else %}
+      <img src="" alt="">
+    {% endif %}
+  </div>
+  <div class="col-md-9">
+    <h1>{{ agency.user.username }}</h1>
+    <br>
+    <p>Name: {{ agency.name }}</p>
+    <p>Subject: {{ agency.subject_name }}</p>
+    <p>Email: {{ agency.email }}</p>
+    <p>Phone: {{ agency.phone }}</p>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <p><a class="btn btn-primary" href="{% url 'response:agency_update' pk=user.pk %}">Edit profile</a></p>
+      </div>
+      <div class="col-md-6">
+        <p><a class="btn btn-danger" href="{% url 'response:write_notice' %}">Add Notice</a></p>
+      </div>
+    </div>
+</div>
+-->
+{% endblock %}
